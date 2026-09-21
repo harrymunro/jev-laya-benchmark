@@ -1,0 +1,11 @@
+{
+ "task": "triage",
+ "n": 167,
+ "wall_s": 29.779936875000203,
+ "items_per_s": 5.607802350319752,
+ "per_call_p50_ms": 136.33404200118093,
+ "per_call_p95_ms": 291.013167001438,
+ "mean_input_tokens": 467.6946107784431,
+ "truncated_frac": 0.0,
+ "model": "aac6fef/laya-typed-decisions-mlx"
+}

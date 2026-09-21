@@ -1,0 +1,11 @@
+{
+ "task": "routing",
+ "n": 137,
+ "wall_s": 3.561261791999641,
+ "items_per_s": 38.469511089516054,
+ "per_call_p50_ms": 141.27654199910467,
+ "per_call_p95_ms": 232.28145800021593,
+ "mean_input_tokens": 713.043795620438,
+ "truncated_frac": null,
+ "model": "jev-1.13.0"
+}

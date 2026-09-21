@@ -1,0 +1,11 @@
+{
+ "task": "claims",
+ "n": 150,
+ "wall_s": 4.398634582999875,
+ "items_per_s": 34.10149153551641,
+ "per_call_p50_ms": 157.78304200011917,
+ "per_call_p95_ms": 294.45816699990246,
+ "mean_input_tokens": 552.5933333333334,
+ "truncated_frac": null,
+ "model": "jev-1.13.0"
+}

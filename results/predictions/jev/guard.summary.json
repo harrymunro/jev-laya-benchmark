@@ -1,0 +1,11 @@
+{
+ "task": "guard",
+ "n": 146,
+ "wall_s": 4.419265084001381,
+ "items_per_s": 33.037167317377964,
+ "per_call_p50_ms": 163.96337449896237,
+ "per_call_p95_ms": 295.48199999953795,
+ "mean_input_tokens": 523.068493150685,
+ "truncated_frac": null,
+ "model": "jev-1.13.0"
+}

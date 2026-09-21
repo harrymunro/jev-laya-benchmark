@@ -1,0 +1,8 @@
+{
+ "generator": "gpt-5.5",
+ "n": 155,
+ "verified": 155,
+ "exact_all": 123,
+ "dropped": 13,
+ "kept": 142
+}

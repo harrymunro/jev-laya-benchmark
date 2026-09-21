@@ -1,0 +1,11 @@
+{
+ "task": "reviews",
+ "n": 150,
+ "wall_s": 4.4100756250009,
+ "items_per_s": 34.013022168972306,
+ "per_call_p50_ms": 166.2576459993943,
+ "per_call_p95_ms": 255.57404199935263,
+ "mean_input_tokens": 522.6066666666667,
+ "truncated_frac": null,
+ "model": "jev-1.13.0"
+}

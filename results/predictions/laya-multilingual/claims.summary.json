@@ -1,0 +1,11 @@
+{
+ "task": "claims",
+ "n": 150,
+ "wall_s": 6.323585250000178,
+ "items_per_s": 23.720720773076597,
+ "per_call_p50_ms": 34.76214600050298,
+ "per_call_p95_ms": 72.67858399973193,
+ "mean_input_tokens": 355.9066666666667,
+ "truncated_frac": 0.0,
+ "model": "aac6fef/laya-multilingual-mlx"
+}

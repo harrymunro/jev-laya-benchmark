@@ -1,0 +1,11 @@
+{
+ "task": "multilingual",
+ "n": 128,
+ "wall_s": 3.7970067919995927,
+ "items_per_s": 33.71076403384367,
+ "per_call_p50_ms": 142.41452050009684,
+ "per_call_p95_ms": 299.95625000083237,
+ "mean_input_tokens": 618.6328125,
+ "truncated_frac": null,
+ "model": "jev-1.13.0"
+}

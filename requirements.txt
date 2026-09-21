@@ -1,0 +1,7 @@
+typesafe-sdk>=0.7.1
+openai>=1.0
+certifi
+matplotlib>=3.8
+markdown>=3.5
+huggingface_hub
+# laya-mlx is installed from its GitHub repo at the pinned commit; see README

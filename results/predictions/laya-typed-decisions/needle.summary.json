@@ -1,0 +1,11 @@
+{
+ "task": "needle",
+ "n": 450,
+ "wall_s": 137.18709233400295,
+ "items_per_s": 3.2801919797556915,
+ "per_call_p50_ms": 348.5204589997011,
+ "per_call_p95_ms": 452.51304200064624,
+ "mean_input_tokens": 1364.66,
+ "truncated_frac": 0.5,
+ "model": "aac6fef/laya-typed-decisions-mlx"
+}

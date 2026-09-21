@@ -1,0 +1,11 @@
+{
+ "task": "moderation",
+ "n": 142,
+ "wall_s": 7.648374874999718,
+ "items_per_s": 18.566035572361407,
+ "per_call_p50_ms": 38.63950000049954,
+ "per_call_p95_ms": 119.85004199959803,
+ "mean_input_tokens": 383.0211267605634,
+ "truncated_frac": 0.0,
+ "model": "aac6fef/laya-multilingual-mlx"
+}

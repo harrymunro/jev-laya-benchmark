@@ -1,0 +1,11 @@
+{
+ "task": "moderation",
+ "n": 142,
+ "wall_s": 3.758252874999016,
+ "items_per_s": 37.783513968584984,
+ "per_call_p50_ms": 150.5703540005925,
+ "per_call_p95_ms": 221.1845829988306,
+ "mean_input_tokens": 572.4366197183099,
+ "truncated_frac": null,
+ "model": "jev-1.13.0"
+}

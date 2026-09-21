@@ -1,0 +1,11 @@
+{
+ "task": "multilingual",
+ "n": 128,
+ "wall_s": 8.248476916000072,
+ "items_per_s": 15.518016393027738,
+ "per_call_p50_ms": 37.92920849991788,
+ "per_call_p95_ms": 162.80679199917358,
+ "mean_input_tokens": 337.96875,
+ "truncated_frac": 0.0,
+ "model": "aac6fef/laya-multilingual-mlx"
+}

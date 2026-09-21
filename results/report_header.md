@@ -1,0 +1,15 @@
+# Jev (TypeSafe) vs Laya (laya-mlx): speed and accuracy on synthetic typed-decision tasks
+
+*2026-09-21. Jev 1.13.0 via the TypeSafe API against three Laya checkpoints running locally on an Apple M3 Pro. 1,470 synthetic items, 3,386 judgments per backend, plus controlled latency sweeps. Code, data, raw predictions and charts: [github.com/harrymunro/jev-laya-benchmark](https://github.com/harrymunro/jev-laya-benchmark).*
+
+## TL;DR
+
+- **Accuracy: Jev by a wide margin, everywhere.** Jev got 92.9% of judgments right against 65.3% for Laya's main 421M checkpoint (71.1% for its typed-decisions checkpoint). Jev won all 19 questions with paired confidence intervals that exclude zero, by 4.7 to 55.6 points. On the categorical (Choice and yes/no) questions Jev is at 98.6 to 99.3%, i.e. at the ceiling of the data; Laya is at 68 to 71%.
+- **Calibration: Jev's probabilities are usable as-is; Laya's are not.** Jev's Brier scores are 0.002 to 0.024 and its yes-rates match the gold base rates. Laya's yes-rates are off by a factor of 2 to 8 in inconsistent directions (13% "urgent" vs 44% gold; 75% "injection" vs 38% gold), so a 0.5 threshold does not work for it without per-question tuning.
+- **Single-question latency: Laya wins by about 3x.** 42 ms median locally (16 to 18 ms for the smaller multilingual checkpoint) against 136 ms for Jev, of which roughly 50 ms was network transit. A later run on a degraded network put Jev at 360 ms with a 295 ms floor; Jev is "your round trip plus about 80 ms".
+- **Multi-question and long-state work: Jev wins.** Jev's latency is flat in the number of questions (50 questions in 170 ms, 3.4 ms each); Laya's is linear (1,002 ms for 50). Above 3 to 4 questions per request the API is faster than the local model. Jev's throughput on independent items scales with concurrency (72 items/s at 32 in flight vs 24 items/s for sequential Laya).
+- **Context: Laya's 512-token window is a hard, silent limit.** Jev found a buried fact in 450 of 450 notes up to 4,000 tokens. Laya managed 61% even at 100 tokens and fell to about chance once the fact sat past its window, answering "not_stated" for what it could not see.
+- **Languages: Jev 100% on 128 non-English tickets in seven languages.** Laya's English checkpoint got 48% on intent; its multilingual checkpoint 64%.
+- **Qualitatively:** Jev answers the literal question and its residual errors sit on genuinely ambiguous ordinal boundaries. Laya tends to answer an easier neighbouring question (anger instead of deadlines; "harmful" instead of "injection"), has strong class priors, and returns flat or multi-peaked distributions. Laya's advantages are real but operational: offline, free per call, tight tail latency, no data leaving the machine.
+
+**Caveat on the ceiling.** The datasets are clean by construction (label-conditioned generation, filtered by a blind re-label), so they measure reading a clear decision correctly. That is exactly the job both models advertise, and it separates them decisively, but it would not separate Jev from another strong model, and no task here targets Jev's documented weak spots (counting, arithmetic, dates, multi-hop).

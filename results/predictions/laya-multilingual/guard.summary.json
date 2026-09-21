@@ -1,0 +1,11 @@
+{
+ "task": "guard",
+ "n": 146,
+ "wall_s": 4.661741791000168,
+ "items_per_s": 31.31876593462633,
+ "per_call_p50_ms": 27.400020999266417,
+ "per_call_p95_ms": 44.99366699928942,
+ "mean_input_tokens": 285.36986301369865,
+ "truncated_frac": 0.0,
+ "model": "aac6fef/laya-multilingual-mlx"
+}

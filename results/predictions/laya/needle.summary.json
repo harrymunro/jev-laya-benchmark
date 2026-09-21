@@ -1,0 +1,11 @@
+{
+ "task": "needle",
+ "n": 450,
+ "wall_s": 82.45396245899974,
+ "items_per_s": 5.457590958394057,
+ "per_call_p50_ms": 208.08274999944842,
+ "per_call_p95_ms": 218.10020900011295,
+ "mean_input_tokens": 839.1244444444444,
+ "truncated_frac": 0.6666666666666666,
+ "model": "aac6fef/laya-mlx"
+}

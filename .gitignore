@@ -1,0 +1,7 @@
+.venv/
+laya-mlx/
+docs/
+logs/
+__pycache__/
+*.pyc
+.DS_Store

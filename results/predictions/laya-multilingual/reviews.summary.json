@@ -1,0 +1,11 @@
+{
+ "task": "reviews",
+ "n": 150,
+ "wall_s": 5.836275083000146,
+ "items_per_s": 25.70132453778931,
+ "per_call_p50_ms": 34.660333499232365,
+ "per_call_p95_ms": 53.68237500078976,
+ "mean_input_tokens": 324.05333333333334,
+ "truncated_frac": 0.0,
+ "model": "aac6fef/laya-multilingual-mlx"
+}

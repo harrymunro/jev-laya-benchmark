@@ -1,0 +1,11 @@
+{
+ "task": "needle",
+ "n": 450,
+ "wall_s": 12.2274402919993,
+ "items_per_s": 36.80246963008648,
+ "per_call_p50_ms": 149.87747899976966,
+ "per_call_p95_ms": 255.14216699957615,
+ "mean_input_tokens": 1705.0288888888888,
+ "truncated_frac": null,
+ "model": "jev-1.13.0"
+}

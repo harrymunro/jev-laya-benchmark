@@ -1,0 +1,11 @@
+{
+ "task": "routing",
+ "n": 137,
+ "wall_s": 20.306349958000283,
+ "items_per_s": 6.746658079042159,
+ "per_call_p50_ms": 124.78245800048171,
+ "per_call_p95_ms": 233.12958300084574,
+ "mean_input_tokens": 499.42335766423355,
+ "truncated_frac": 0.0,
+ "model": "aac6fef/laya-typed-decisions-mlx"
+}

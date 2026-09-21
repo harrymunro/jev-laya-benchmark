@@ -1,0 +1,11 @@
+{
+ "task": "triage",
+ "n": 167,
+ "wall_s": 4.7913352089999535,
+ "items_per_s": 34.854584936222025,
+ "per_call_p50_ms": 151.05195800060756,
+ "per_call_p95_ms": 272.69404199978453,
+ "mean_input_tokens": 687.2335329341317,
+ "truncated_frac": null,
+ "model": "jev-1.13.0"
+}
