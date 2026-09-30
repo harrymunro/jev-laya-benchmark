@@ -1,0 +1,14 @@
+{
+ "task": "moderation",
+ "n": 142,
+ "wall_s": 12.431167584029026,
+ "items_per_s": 11.422901271352407,
+ "per_call_p50_ms": 647.9925835155882,
+ "per_call_p95_ms": 885.7372089987621,
+ "mean_input_tokens": 253.56338028169014,
+ "mean_output_tokens": 206.04929577464787,
+ "total_cost_usd": null,
+ "failed": 0,
+ "truncated_frac": null,
+ "model": "jaredpalmer/kev-4b-20260924"
+}

@@ -27,8 +27,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--backends", nargs="+", default=["jev", "laya", "laya-multilingual", "laya-typed-decisions"])
     ap.add_argument("--tasks", nargs="+", default=list(TASKS))
-    ap.add_argument("--workers", type=int, default=6, help="Jev HTTP concurrency")
+    ap.add_argument("--workers", type=int, default=6, help="HTTP concurrency for API backends")
     ap.add_argument("--limit", type=int, default=None)
+    ap.add_argument("--out-dir", type=Path, default=PRED, help="where predictions/<backend>/ are written")
     args = ap.parse_args()
 
     for name in args.backends:
@@ -46,7 +47,7 @@ def main():
             t0 = time.perf_counter()
             results = backend.predict_many(jobs, workers=args.workers)
             wall = time.perf_counter() - t0
-            out_dir = PRED / name
+            out_dir = args.out_dir / name
             out_dir.mkdir(parents=True, exist_ok=True)
             with (out_dir / f"{task}.jsonl").open("w") as f:
                 for it, r in zip(items, results):
@@ -57,6 +58,10 @@ def main():
                         "answers": r["answers"],
                         "elapsed_ms": r["elapsed_ms"],
                         "input_tokens": r["input_tokens"],
+                        "output_tokens": r.get("output_tokens"),
+                        "cost_usd": r.get("cost_usd"),
+                        "provider": r.get("provider"),
+                        "failed": r.get("failed"),
                         "truncated": r.get("truncated"),
                         "meta": {k: it[k] for k in ("length_target", "position", "language", "verifier_exact") if k in it},
                     }
@@ -70,7 +75,10 @@ def main():
                 "per_call_p50_ms": statistics.median(lat),
                 "per_call_p95_ms": sorted(lat)[int(0.95 * len(lat)) - 1],
                 "mean_input_tokens": statistics.fmean(r["input_tokens"] for r in results),
-                "truncated_frac": (sum(1 for r in results if r.get("truncated")) / len(results)) if name != "jev" else None,
+                "mean_output_tokens": statistics.fmean(r.get("output_tokens") or 0 for r in results),
+                "total_cost_usd": sum(r.get("cost_usd") or 0 for r in results) or None,
+                "failed": sum(1 for r in results if r.get("failed")),
+                "truncated_frac": (sum(1 for r in results if r.get("truncated")) / len(results)) if name.startswith("laya") else None,
                 "model": results[0]["model"],
             }
             (out_dir / f"{task}.summary.json").write_text(json.dumps(summary, indent=1))

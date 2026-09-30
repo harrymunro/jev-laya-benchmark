@@ -14,6 +14,10 @@ Speed and accuracy of [Jev](https://docs.typesafe.ai) (TypeSafe's hosted System 
 
 Jev won all 19 questions with paired confidence intervals excluding zero. Laya is about 3x faster on a single short question; Jev is faster above 3 to 4 questions per request and on states longer than Laya's 512-token window. Details, calibration analysis, the long-context and multilingual results, and qualitative observations are in the report.
 
+## Jev vs Kev (OpenRouter), 2026-09-30
+
+A follow-up run compares Jev with [Kev 4B](https://openrouter.ai/jaredpalmer/kev-4b), an open-weight decision model served over the same `/v1/systemone` contract, both called through OpenRouter on the same items: Jev 93.0% vs Kev 88.0% mean accuracy (Jev significantly better on 9 of 19 questions, Kev on none), 203 vs 405 ms p50 for one question, $0.039 vs $0.025 estimated per 1,000 items. **Read it: [results/jev-vs-kev/REPORT.md](results/jev-vs-kev/REPORT.md).**
+
 ## Layout
 
 ```

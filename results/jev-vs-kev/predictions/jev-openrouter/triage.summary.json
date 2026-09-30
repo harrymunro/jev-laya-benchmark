@@ -1,0 +1,14 @@
+{
+ "task": "triage",
+ "n": 167,
+ "wall_s": 5.1369268340058625,
+ "items_per_s": 32.509709675925166,
+ "per_call_p50_ms": 228.77549997065216,
+ "per_call_p95_ms": 343.06766698136926,
+ "mean_input_tokens": 687.2335329341317,
+ "mean_output_tokens": 99.89221556886227,
+ "total_cost_usd": null,
+ "failed": 0,
+ "truncated_frac": null,
+ "model": "typesafe/jev-1.13-20260917"
+}

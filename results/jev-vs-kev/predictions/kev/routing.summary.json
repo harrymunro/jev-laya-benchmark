@@ -1,0 +1,14 @@
+{
+ "task": "routing",
+ "n": 137,
+ "wall_s": 12.940992542076856,
+ "items_per_s": 10.586514098864733,
+ "per_call_p50_ms": 690.5334999319166,
+ "per_call_p95_ms": 996.7558749485761,
+ "mean_input_tokens": 350.1240875912409,
+ "mean_output_tokens": 284.46715328467155,
+ "total_cost_usd": null,
+ "failed": 0,
+ "truncated_frac": null,
+ "model": "jaredpalmer/kev-4b-20260924"
+}

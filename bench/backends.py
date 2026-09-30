@@ -1,4 +1,4 @@
-"""Uniform backend interface for Jev (TypeSafe API) and Laya (local MLX).
+"""Uniform backend interface for System One models (Jev on the TypeSafe API; Jev and Kev on OpenRouter) and Laya (local MLX).
 
 predict(state, questions) -> dict with keys:
     answers: {qid: {"type", "choice"/"score"/"noul", "probabilities", "confidence"}}
@@ -10,6 +10,7 @@ predict(state, questions) -> dict with keys:
 import os
 import time
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 
 
 def _norm_answer(qid, qdef, raw):
@@ -30,15 +31,16 @@ def _norm_answer(qid, qdef, raw):
 
 
 class JevBackend:
-    name = "jev"
+    """Any model served over the /v1/systemone contract (TypeSafe API or OpenRouter)."""
 
-    def __init__(self, model="jev-latest", timeout=120.0, max_retries=8):
+    def __init__(self, model="jev-latest", name="jev", api_key=None, base_url=None, timeout=120.0, max_retries=8):
         from typesafe_sdk import Choice, Noul, RetryPolicy, Score, TypeSafeClient
 
         self._Choice, self._Noul, self._Score = Choice, Noul, Score
+        self.name = name
         self.model = model
         self.client = TypeSafeClient(
-            model=model, timeout=timeout, retry=RetryPolicy(max_retries=max_retries)
+            model=model, api_key=api_key, base_url=base_url, timeout=timeout, retry=RetryPolicy(max_retries=max_retries)
         )
         self.reported_model = None
         self.retries_seen = 0
@@ -74,13 +76,17 @@ class JevBackend:
             else:
                 raw = {"noul": resp.nouls[qid].noul}
             answers[qid] = _norm_answer(qid, q, raw)
+        try:
+            request_id = resp.request_id
+        except Exception:  # OpenRouter responses carry no TypeSafe request id; the SDK raises instead of returning None
+            request_id = None
         return {
             "answers": answers,
             "elapsed_ms": elapsed,
             "input_tokens": resp.usage.input_tokens,
             "output_tokens": resp.usage.output_tokens,
             "model": resp.model,
-            "request_id": getattr(resp, "request_id", None),
+            "request_id": request_id,
         }
 
     def predict_many(self, jobs, workers=6):
@@ -148,10 +154,30 @@ LAYA_CHECKPOINTS = {
     "laya-typed-decisions": "aac6fef/laya-typed-decisions-mlx",
 }
 
+# System One models on OpenRouter, called with the TypeSafe SDK over the same /v1/systemone contract.
+OPENROUTER_BASE_URL = "https://openrouter.ai/api"
+OPENROUTER_SYSTEM_ONE = {
+    "jev-openrouter": "~typesafe/jev-latest",
+    "kev": "jaredpalmer/kev-4b",
+}
+
+
+def openrouter_key():
+    """OPENROUTER_API_KEY from the environment, else from the repo's .env (see scripts/set-openrouter-key.sh)."""
+    if os.environ.get("OPENROUTER_API_KEY"):
+        return os.environ["OPENROUTER_API_KEY"]
+    env = Path(__file__).resolve().parents[1] / ".env"
+    for line in env.read_text().splitlines() if env.exists() else []:
+        if line.startswith("OPENROUTER_API_KEY="):
+            return line.split("=", 1)[1].strip()
+    raise RuntimeError("No OpenRouter key: run scripts/set-openrouter-key.sh")
+
 
 def make_backend(name, **kw):
     if name == "jev":
         return JevBackend(**kw)
     if name in LAYA_CHECKPOINTS:
         return LayaBackend(repo=LAYA_CHECKPOINTS[name], name=name, **kw)
+    if name in OPENROUTER_SYSTEM_ONE:
+        return JevBackend(model=OPENROUTER_SYSTEM_ONE[name], name=name, api_key=openrouter_key(), base_url=OPENROUTER_BASE_URL, **kw)
     raise ValueError(name)

@@ -1,0 +1,14 @@
+{
+ "task": "claims",
+ "n": 150,
+ "wall_s": 13.469139541964978,
+ "items_per_s": 11.136568860442356,
+ "per_call_p50_ms": 721.0622709826566,
+ "per_call_p95_ms": 857.3007920058444,
+ "mean_input_tokens": 231.84,
+ "mean_output_tokens": 90.94,
+ "total_cost_usd": null,
+ "failed": 0,
+ "truncated_frac": null,
+ "model": "jaredpalmer/kev-4b-20260924"
+}

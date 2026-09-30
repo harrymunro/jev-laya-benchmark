@@ -1,0 +1,14 @@
+{
+ "task": "needle",
+ "n": 450,
+ "wall_s": 55.422001917031594,
+ "items_per_s": 8.119519043604082,
+ "per_call_p50_ms": 921.450479014311,
+ "per_call_p95_ms": 1480.599624919705,
+ "mean_input_tokens": 1356.4,
+ "mean_output_tokens": 111.86666666666666,
+ "total_cost_usd": null,
+ "failed": 0,
+ "truncated_frac": null,
+ "model": "jaredpalmer/kev-4b-20260924"
+}

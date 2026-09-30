@@ -1,0 +1,14 @@
+{
+ "task": "triage",
+ "n": 167,
+ "wall_s": 15.028024208033457,
+ "items_per_s": 11.11257193149367,
+ "per_call_p50_ms": 677.598875015974,
+ "per_call_p95_ms": 1001.5468749916181,
+ "mean_input_tokens": 326.02994011976045,
+ "mean_output_tokens": 274.8682634730539,
+ "total_cost_usd": null,
+ "failed": 0,
+ "truncated_frac": null,
+ "model": "jaredpalmer/kev-4b-20260924"
+}

@@ -1,0 +1,14 @@
+{
+ "task": "reviews",
+ "n": 150,
+ "wall_s": 13.214413082925603,
+ "items_per_s": 11.351241940046178,
+ "per_call_p50_ms": 657.3180624982342,
+ "per_call_p95_ms": 918.4361660154536,
+ "mean_input_tokens": 218.1,
+ "mean_output_tokens": 204.21333333333334,
+ "total_cost_usd": null,
+ "failed": 0,
+ "truncated_frac": null,
+ "model": "jaredpalmer/kev-4b-20260924"
+}

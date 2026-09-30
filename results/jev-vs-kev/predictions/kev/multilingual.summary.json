@@ -1,0 +1,14 @@
+{
+ "task": "multilingual",
+ "n": 128,
+ "wall_s": 11.831660166964866,
+ "items_per_s": 10.81843107338295,
+ "per_call_p50_ms": 775.5069795530289,
+ "per_call_p95_ms": 865.7442090334371,
+ "mean_input_tokens": 264.9375,
+ "mean_output_tokens": 122.5234375,
+ "total_cost_usd": null,
+ "failed": 0,
+ "truncated_frac": null,
+ "model": "jaredpalmer/kev-4b-20260924"
+}

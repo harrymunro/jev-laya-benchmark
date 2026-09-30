@@ -1,0 +1,14 @@
+{
+ "task": "guard",
+ "n": 146,
+ "wall_s": 11.176211916957982,
+ "items_per_s": 13.063460239016234,
+ "per_call_p50_ms": 596.8616664758883,
+ "per_call_p95_ms": 736.8175830924883,
+ "mean_input_tokens": 220.66438356164383,
+ "mean_output_tokens": 175.17123287671234,
+ "total_cost_usd": null,
+ "failed": 0,
+ "truncated_frac": null,
+ "model": "jaredpalmer/kev-4b-20260924"
+}

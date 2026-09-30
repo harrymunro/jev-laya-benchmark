@@ -1,0 +1,14 @@
+{
+ "task": "needle",
+ "n": 450,
+ "wall_s": 13.252502040937543,
+ "items_per_s": 33.95585215606312,
+ "per_call_p50_ms": 223.4213334741071,
+ "per_call_p95_ms": 303.3082919428125,
+ "mean_input_tokens": 1705.0288888888888,
+ "mean_output_tokens": 77.0,
+ "total_cost_usd": null,
+ "failed": 0,
+ "truncated_frac": null,
+ "model": "typesafe/jev-1.13-20260917"
+}
